@@ -13,24 +13,49 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0e27;
+            background-image: 
+                radial-gradient(at 20% 30%, rgba(30, 58, 138, 0.3) 0px, transparent 50%),
+                radial-gradient(at 80% 70%, rgba(79, 70, 229, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.15) 0px, transparent 50%);
             min-height: 100vh;
             padding: 40px 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(180deg, rgba(10, 14, 39, 0.8) 0%, rgba(10, 14, 39, 0.95) 100%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 24px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
         }
 
         h1 {
-            color: #667eea;
+            color: #1e293b;
             margin-bottom: 30px;
             text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .form-group {
@@ -55,7 +80,8 @@
 
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #1e293b;
+            box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
         }
 
         textarea {
@@ -64,25 +90,42 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1e293b;
             color: white;
-            padding: 15px 30px;
+            padding: 16px 32px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.1em;
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
-            transition: transform 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 12px rgba(30, 41, 59, 0.3),
+                0 2px 4px rgba(30, 41, 59, 0.2);
+            font-weight: 600;
+            letter-spacing: 0.01em;
         }
 
         .btn:hover {
             transform: translateY(-2px);
+            background: #0f172a;
+            box-shadow: 
+                0 8px 20px rgba(30, 41, 59, 0.4),
+                0 4px 8px rgba(30, 41, 59, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
         }
 
         .btn-secondary {
-            background: #6c757d;
+            background: #475569;
             margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #334155;
         }
 
         .projects-section {
@@ -92,16 +135,18 @@
         }
 
         .project-item {
-            background: #f8f9fa;
+            background: #f8fafc;
             padding: 20px;
             margin: 15px 0;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
+            border-radius: 12px;
+            border-left: 4px solid #1e293b;
+            border: 1px solid #e2e8f0;
         }
 
         .project-item h3 {
-            color: #667eea;
+            color: #1e293b;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .remove-btn {
@@ -115,13 +160,20 @@
         }
 
         .add-btn {
-            background: #28a745;
+            background: #1e293b;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             margin-top: 10px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .add-btn:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
         }
 
         .loading {
