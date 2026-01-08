@@ -320,6 +320,7 @@
         function generateCV() {
             const formData = {
                 name: document.getElementById('fullName').value,
+                jobTitle: document.getElementById('jobTitle').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 location: document.getElementById('location').value,
@@ -385,6 +386,7 @@
                 const data = JSON.parse(saved);
                 if (data.github) document.getElementById('githubUsername').value = data.github;
                 if (data.name) document.getElementById('fullName').value = data.name;
+                if (data.jobTitle) document.getElementById('jobTitle').value = data.jobTitle;
                 if (data.email) document.getElementById('email').value = data.email;
                 if (data.phone) document.getElementById('phone').value = data.phone;
                 if (data.location) document.getElementById('location').value = data.location;
