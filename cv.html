@@ -457,6 +457,10 @@
             
             // Update header
             document.querySelector('header h1').textContent = data.name || 'YOUR NAME';
+            const jobTitleElement = document.getElementById('jobTitleHeader');
+            if (jobTitleElement && data.jobTitle) {
+                jobTitleElement.textContent = data.jobTitle;
+            }
             const contactInfo = document.querySelector('.contact-info');
             if (contactInfo) {
                 contactInfo.innerHTML = `
