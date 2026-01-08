@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator - Professional Resume Builder</title>
+    <meta name="description" content="Generate a professional CV by fetching your GitHub projects. Free, open-source CV generator for developers.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .features {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .features h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            padding: 10px 0;
+            color: #555;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .github-link {
+            margin-top: 30px;
+            display: block;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CV Generator</h1>
+        <p>
+            Generate a professional CV by fetching your GitHub projects automatically. 
+            Create a beautiful, downloadable resume in minutes.
+        </p>
+        
+        <a href="cv-generator.html" class="btn">Get Started</a>
+
+        <div class="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Automatically fetch projects from GitHub</li>
+                <li>Professional, ATS-friendly design</li>
+                <li>Export to PDF with one click</li>
+                <li>Customizable sections and styling</li>
+                <li>No backend required - pure HTML/CSS/JS</li>
+                <li>100% free and open source</li>
+            </ul>
+        </div>
+
+        <a href="https://github.com/telmon95/cv-generator" target="_blank" class="github-link">
+            View on GitHub →
+        </a>
+    </div>
+</body>
+</html>
+
