@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator - Fetch from GitHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            margin-top: 10px;
+        }
+
+        .projects-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .project-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .add-btn {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CV Generator</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Fill in your details and fetch projects from GitHub to generate your professional CV
+        </p>
+
+        <form id="cvForm">
+            <div class="form-group">
+                <label>GitHub Username *</label>
+                <input type="text" id="githubUsername" placeholder="telmonmaluleka" required>
+                <button type="button" class="add-btn" onclick="fetchGitHubProjects()" style="margin-top: 10px;">
+                    Fetch Projects from GitHub
+                </button>
+            </div>
+
+            <div id="githubStatus"></div>
+
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" id="phone">
+            </div>
+
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" id="location">
+            </div>
+
+            <div class="form-group">
+                <label>LinkedIn Profile</label>
+                <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+            </div>
+
+            <div class="form-group">
+                <label>Professional Summary *</label>
+                <textarea id="summary" required>Passionate Fullstack Developer and DevOps Engineer with expertise in building scalable web applications and implementing robust CI/CD pipelines. Strong background in modern JavaScript frameworks, cloud infrastructure, and containerization technologies.</textarea>
+            </div>
+
+            <div class="projects-section">
+                <h2 style="color: #667eea; margin-bottom: 20px;">Projects</h2>
+                <div id="projectsContainer">
+                    <!-- Projects will be added here -->
+                </div>
+                <button type="button" class="add-btn" onclick="addProject()">+ Add Project</button>
+            </div>
+
+            <div class="form-group">
+                <label>Skills (comma-separated)</label>
+                <textarea id="skills" placeholder="React, Node.js, Docker, Kubernetes, AWS, etc."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Experience (JSON format or leave blank)</label>
+                <textarea id="experience" placeholder='[{"title": "Fullstack Developer", "company": "Company Name", "start": "2020", "end": "Present", "description": "Worked on..."}]'></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Education</label>
+                <textarea id="education" placeholder="Degree, University, Year"></textarea>
+            </div>
+
+            <button type="button" class="btn" onclick="generateCV()">Generate CV</button>
+            <button type="button" class="btn btn-secondary" onclick="downloadCV()">Download as HTML</button>
+        </form>
+    </div>
+
+    <script>
+        let projects = [];
+
+        async function fetchGitHubProjects() {
+            const username = document.getElementById('githubUsername').value;
+            if (!username) {
+                alert('Please enter your GitHub username');
+                return;
+            }
+
+            const statusDiv = document.getElementById('githubStatus');
+            statusDiv.innerHTML = '<div class="loading">Fetching projects from GitHub...</div>';
+
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+                if (!response.ok) {
+                    throw new Error('GitHub user not found or API rate limit exceeded');
+                }
+
+                const repos = await response.json();
+                projects = repos.map(repo => ({
+                    name: repo.name,
+                    description: repo.description || 'No description available',
+                    url: repo.html_url,
+                    language: repo.language || 'N/A',
+                    stars: repo.stargazers_count,
+                    updated: new Date(repo.updated_at).toLocaleDateString(),
+                    include: true // Initialize include property
+                }));
+
+                displayProjects();
+                statusDiv.innerHTML = `<div class="success">Successfully fetched ${projects.length} repositories!</div>`;
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+            }
+        }
+
+        function displayProjects() {
+            const container = document.getElementById('projectsContainer');
+            container.innerHTML = '';
+
+            projects.forEach((project, index) => {
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'project-item';
+                const isChecked = project.include !== false; // Default to true if undefined
+                projectDiv.innerHTML = `
+                    <h3>${project.name}</h3>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <p><strong>Language:</strong> ${project.language} | <strong>Stars:</strong> ${project.stars} | <strong>Updated:</strong> ${project.updated}</p>
+                    <p><strong>URL:</strong> <a href="${project.url}" target="_blank">${project.url}</a></p>
+                    <label>
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleProject(${index}, this.checked)" data-index="${index}"> Include in CV
+                    </label>
+                `;
+                container.appendChild(projectDiv);
+            });
+        }
+
+        function toggleProject(index, isChecked) {
+            projects[index].include = isChecked;
+        }
+
+        function addProject() {
+            const container = document.getElementById('projectsContainer');
+            const projectDiv = document.createElement('div');
+            projectDiv.className = 'project-item';
+            projectDiv.innerHTML = `
+                <h3>New Project</h3>
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" class="project-name" placeholder="Project Name">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="project-desc" placeholder="Project description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Technologies (comma-separated)</label>
+                    <input type="text" class="project-tech" placeholder="React, Node.js, Docker">
+                </div>
+                <div class="form-group">
+                    <label>GitHub URL</label>
+                    <input type="url" class="project-url" placeholder="https://github.com/username/repo">
+                </div>
+                <button type="button" class="remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            container.appendChild(projectDiv);
+        }
+
+        function generateCV() {
+            const formData = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                location: document.getElementById('location').value,
+                linkedin: document.getElementById('linkedin').value,
+                github: document.getElementById('githubUsername').value,
+                summary: document.getElementById('summary').value,
+                skills: document.getElementById('skills').value.split(',').map(s => s.trim()),
+                experience: document.getElementById('experience').value,
+                education: document.getElementById('education').value,
+                projects: []
+            };
+
+            // Get projects from GitHub - only include if checkbox is checked
+            projects.forEach((project, index) => {
+                const checkbox = document.querySelector(`input[data-index="${index}"]`);
+                // Only include if checkbox exists and is checked
+                if (checkbox && checkbox.checked) {
+                    formData.projects.push({
+                        name: project.name,
+                        description: project.description,
+                        url: project.url,
+                        tech: [project.language]
+                    });
+                }
+            });
+
+            // Get manually added projects
+            document.querySelectorAll('.project-item').forEach(item => {
+                const name = item.querySelector('.project-name')?.value;
+                const desc = item.querySelector('.project-desc')?.value;
+                const tech = item.querySelector('.project-tech')?.value;
+                const url = item.querySelector('.project-url')?.value;
+
+                if (name && desc) {
+                    formData.projects.push({
+                        name: name,
+                        description: desc,
+                        url: url || '',
+                        tech: tech ? tech.split(',').map(t => t.trim()) : []
+                    });
+                }
+            });
+
+            // Store in localStorage and open CV
+            localStorage.setItem('cvData', JSON.stringify(formData));
+            window.open('cv.html', '_blank');
+        }
+
+        function downloadCV() {
+            generateCV();
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.href = 'cv.html';
+                link.download = 'cv.html';
+                link.click();
+            }, 500);
+        }
+
+        // Load saved data if available
+        window.onload = () => {
+            const saved = localStorage.getItem('cvData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                if (data.github) document.getElementById('githubUsername').value = data.github;
+                if (data.name) document.getElementById('fullName').value = data.name;
+                if (data.email) document.getElementById('email').value = data.email;
+                if (data.phone) document.getElementById('phone').value = data.phone;
+                if (data.location) document.getElementById('location').value = data.location;
+                if (data.linkedin) document.getElementById('linkedin').value = data.linkedin;
+                if (data.summary) document.getElementById('summary').value = data.summary;
+            }
+        };
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullstack & DevOps Developer - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            font-size: 0.9em;
+        }
+
+        .section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 1.1em;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .skill-category li:before {
+            content: "▸ ";
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .project {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .experience-item, .education-item {
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 3px solid #e0e0e0;
+        }
+
+        .experience-item h4, .education-item h4 {
+            color: #667eea;
+        }
+
+        .date {
+            color: #888;
+            font-style: italic;
+            margin: 5px 0;
+        }
+
+        .description {
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .description ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .description li {
+            margin: 5px 0;
+        }
+
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        @media print {
+            .download-btn {
+                display: none;
+            }
+            
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+
+        .github-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YOUR NAME</h1>
+            <p>Fullstack Developer & DevOps Engineer</p>
+            <div class="contact-info">
+                <span>Email: your.email@example.com</span>
+                <span>Phone: +1 (555) 123-4567</span>
+                <span>GitHub: github.com/YOUR_USERNAME</span>
+                <span>LinkedIn: linkedin.com/in/YOUR_PROFILE</span>
+                <span>Location: Your Location</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Professional Summary</h2>
+            <p>
+                Passionate Fullstack Developer and DevOps Engineer with expertise in building scalable web applications 
+                and implementing robust CI/CD pipelines. Strong background in modern JavaScript frameworks, cloud infrastructure, 
+                and containerization technologies. Proven ability to deliver high-quality software solutions from concept to deployment.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>React & Next.js</li>
+                        <li>TypeScript</li>
+                        <li>Three.js & WebGL</li>
+                        <li>Tailwind CSS</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>Node.js & Express</li>
+                        <li>RESTful APIs</li>
+                        <li>GraphQL</li>
+                        <li>Database Design</li>
+                        <li>Authentication & Security</li>
+                        <li>Microservices</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>DevOps</h4>
+                    <ul>
+                        <li>Docker & Kubernetes</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>AWS / Azure / GCP</li>
+                        <li>Infrastructure as Code</li>
+                        <li>Monitoring & Logging</li>
+                        <li>Git & Version Control</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools & Others</h4>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Linux Administration</li>
+                        <li>Nginx / Apache</li>
+                        <li>MongoDB / PostgreSQL</li>
+                        <li>Redis</li>
+                        <li>Testing Frameworks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Projects</h2>
+            
+            <div class="project">
+                <h4>Consciousness Simulator</h4>
+                <p class="description">
+                    An interactive 3D visualization of thoughts as living entities in space. Built with Next.js, Three.js, 
+                    and TypeScript, featuring real-time physics simulation, emotional force-based interactions, and a 
+                    social media-style timeline for thought sessions.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Three.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">WebGL</span>
+                    <span class="tech-tag">Physics Engine</span>
+                </div>
+                <p style="margin-top: 10px;">
+                    <strong>Key Features:</strong> 3D thought visualization, real-time physics simulation, 
+                    emotional gravity system, thought merging, session management, shareable timelines, 
+                    interactive controls, keyboard shortcuts.
+                </p>
+                <p style="margin-top: 5px;">
+                    <a href="https://github.com/YOUR_USERNAME/consciousness-simulator" class="github-link">View on GitHub →</a>
+                </p>
+            </div>
+
+            <!-- Add more projects from your GitHub here -->
+            <div class="project">
+                <h4>Project Name 2</h4>
+                <p class="description">
+                    Brief description of your project. What problem does it solve? What technologies did you use?
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Technology 1</span>
+                    <span class="tech-tag">Technology 2</span>
+                    <span class="tech-tag">Technology 3</span>
+                </div>
+                <p style="margin-top: 10px;">
+                    <strong>Key Features:</strong> Feature 1, Feature 2, Feature 3
+                </p>
+                <p style="margin-top: 5px;">
+                    <a href="https://github.com/YOUR_USERNAME/project-name" class="github-link">View on GitHub →</a>
+                </p>
+            </div>
+
+            <div class="project">
+                <h4>Project Name 3</h4>
+                <p class="description">
+                    Brief description of your project. What problem does it solve? What technologies did you use?
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Technology 1</span>
+                    <span class="tech-tag">Technology 2</span>
+                    <span class="tech-tag">Technology 3</span>
+                </div>
+                <p style="margin-top: 10px;">
+                    <strong>Key Features:</strong> Feature 1, Feature 2, Feature 3
+                </p>
+                <p style="margin-top: 5px;">
+                    <a href="https://github.com/YOUR_USERNAME/project-name" class="github-link">View on GitHub →</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h4>Fullstack Developer / DevOps Engineer</h4>
+                <p class="date">Company Name | Start Date - End Date (or Present)</p>
+                <div class="description">
+                    <ul>
+                        <li>Developed and maintained scalable web applications using React, Node.js, and cloud services</li>
+                        <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                        <li>Designed and deployed containerized applications using Docker and Kubernetes</li>
+                        <li>Collaborated with cross-functional teams to deliver high-quality software solutions</li>
+                        <li>Optimized application performance, resulting in 40% improvement in load times</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <h4>Previous Position Title</h4>
+                <p class="date">Previous Company | Start Date - End Date</p>
+                <div class="description">
+                    <ul>
+                        <li>Key achievement or responsibility</li>
+                        <li>Another key achievement or responsibility</li>
+                        <li>Impact or result of your work</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <h4>Degree Name</h4>
+                <p class="date">University Name | Graduation Year</p>
+                <div class="description">
+                    <p>Relevant coursework, honors, or achievements</p>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <h4>Certifications</h4>
+                <div class="description">
+                    <ul>
+                        <li>AWS Certified Solutions Architect (if applicable)</li>
+                        <li>Kubernetes Administrator (if applicable)</li>
+                        <li>Other relevant certifications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Additional Information</h2>
+            <div class="description">
+                <ul>
+                    <li>Open source contributor</li>
+                    <li>Active on GitHub with X+ repositories</li>
+                    <li>Technical blog writer (if applicable)</li>
+                    <li>Languages: English (Fluent), Others (if applicable)</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <button class="download-btn" onclick="window.print()">Download as PDF</button>
+
+    <script>
+        // Load CV data from localStorage (set by cv-generator.html)
+        function loadCVData() {
+            const cvData = localStorage.getItem('cvData');
+            if (!cvData) {
+                // If no data, prompt for GitHub username
+                const githubUsername = prompt('Enter your GitHub username (or leave blank to skip):');
+                if (githubUsername) {
+                    document.querySelectorAll('.github-link').forEach(link => {
+                        link.href = link.href.replace('YOUR_USERNAME', githubUsername);
+                    });
+                    const githubSpan = document.querySelector('header .contact-info span:nth-child(3)');
+                    if (githubSpan) {
+                        githubSpan.textContent = `GitHub: github.com/${githubUsername}`;
+                    }
+                }
+                return;
+            }
+
+            const data = JSON.parse(cvData);
+            
+            // Update header
+            document.querySelector('header h1').textContent = data.name || 'YOUR NAME';
+            const contactInfo = document.querySelector('.contact-info');
+            if (contactInfo) {
+                contactInfo.innerHTML = `
+                    ${data.email ? `<span>Email: ${data.email}</span>` : ''}
+                    ${data.phone ? `<span>Phone: ${data.phone}</span>` : ''}
+                    ${data.github ? `<span>GitHub: github.com/${data.github}</span>` : ''}
+                    ${data.linkedin ? `<span>LinkedIn: ${data.linkedin}</span>` : ''}
+                    ${data.location ? `<span>Location: ${data.location}</span>` : ''}
+                `;
+            }
+
+            // Update summary
+            const summarySection = document.querySelector('.section:first-of-type p');
+            if (summarySection && data.summary) {
+                summarySection.textContent = data.summary;
+            }
+
+            // Update projects
+            if (data.projects && data.projects.length > 0) {
+                const projectsSection = document.querySelector('.section:nth-of-type(3)');
+                const projectsContainer = projectsSection.querySelector('.project');
+                const projectsHTML = data.projects.map(project => `
+                    <div class="project">
+                        <h4>${project.name}</h4>
+                        <p class="description">${project.description}</p>
+                        ${project.tech && project.tech.length > 0 ? `
+                            <div class="project-tech">
+                                ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                        ${project.url ? `<p style="margin-top: 10px;"><a href="${project.url}" class="github-link" target="_blank">View on GitHub →</a></p>` : ''}
+                    </div>
+                `).join('');
+                
+                // Remove placeholder projects and add real ones
+                const existingProjects = projectsSection.querySelectorAll('.project');
+                existingProjects.forEach(p => p.remove());
+                projectsSection.insertAdjacentHTML('beforeend', projectsHTML);
+            }
+
+            // Update skills if provided
+            if (data.skills && data.skills.length > 0) {
+                // You can customize this to update the skills section
+                console.log('Skills:', data.skills);
+            }
+
+            // Clear localStorage after loading
+            localStorage.removeItem('cvData');
+        }
+
+        // Load data on page load
+        window.addEventListener('DOMContentLoaded', loadCVData);
+    </script>
+</body>
+</html>
+
