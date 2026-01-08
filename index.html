@@ -20,6 +20,8 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -36,6 +38,7 @@
             color: #667eea;
             font-size: 2.5em;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         p {
@@ -56,11 +59,19 @@
             font-weight: 600;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
         }
 
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(0);
         }
 
         .features {
@@ -72,6 +83,7 @@
             color: #667eea;
             margin-bottom: 20px;
             text-align: center;
+            font-size: 1.5em;
         }
 
         .features ul {
@@ -84,6 +96,7 @@
             color: #555;
             padding-left: 25px;
             position: relative;
+            font-size: 1em;
         }
 
         .features li:before {
@@ -105,6 +118,132 @@
 
         .github-link:hover {
             text-decoration: underline;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 40px 25px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1em;
+                margin-bottom: 30px;
+            }
+
+            .btn {
+                padding: 14px 30px;
+                font-size: 1em;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .features {
+                margin-top: 30px;
+            }
+
+            .features h2 {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+            }
+
+            .features li {
+                padding: 8px 0;
+                padding-left: 25px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 1.75em;
+                margin-bottom: 12px;
+            }
+
+            p {
+                font-size: 0.95em;
+                margin-bottom: 25px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95em;
+            }
+
+            .features h2 {
+                font-size: 1.2em;
+            }
+
+            .features li {
+                font-size: 0.9em;
+                padding: 7px 0;
+                padding-left: 22px;
+            }
+        }
+
+        /* Tablet Styles */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 50px 35px;
+            }
+
+            h1 {
+                font-size: 2.25em;
+            }
+        }
+
+        /* Large Desktop */
+        @media screen and (min-width: 1440px) {
+            .container {
+                max-width: 700px;
+                padding: 70px 50px;
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
+            p {
+                font-size: 1.15em;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .btn {
+                min-height: 44px; /* Better touch target */
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .btn {
+                display: none;
+            }
         }
     </style>
 </head>
